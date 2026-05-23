@@ -1,0 +1,52 @@
+students = {}
+
+while True:
+    print("\n----- Student Record Management System -----")
+    print("1. Add Student")
+    print("2. View Students")
+    print("3. Delete Student")
+    print("4. Exit")
+
+    choice = input("Enter Choice: ")
+
+    if choice == "1":
+        roll = input("Enter Roll No: ")
+        name = input("Enter Name: ")
+        age = input("Enter Age: ")
+        marks = input("Enter Marks: ")
+
+        students[roll] = {
+            "Name": name,
+            "Age": age,
+            "Marks": marks
+        }
+
+        print("Student Added Successfully!")
+
+    elif choice == "2":
+        if students:
+            print("\n----- Student Records -----")
+            for roll, data in students.items():
+                print(f"Roll No : {roll}")
+                print(f"Name    : {data['Name']}")
+                print(f"Age     : {data['Age']}")
+                print(f"Marks   : {data['Marks']}")
+                print("--------------------------")
+        else:
+            print("No Records Found!")
+
+    elif choice == "3":
+        roll = input("Enter Roll No to Delete: ")
+
+        if roll in students:
+            del students[roll]
+            print("Student Deleted Successfully!")
+        else:
+            print("Student Not Found!")
+
+    elif choice == "4":
+        print("Program Closed")
+        break
+
+    else:
+        print("Invalid choice!")
